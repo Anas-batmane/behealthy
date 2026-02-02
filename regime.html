@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Diel | Be Healthy</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-dark fixed-top custom-nav">
+      <div class="container">
+        <a class="navbar-brand logo" href="acceuil.html">🥗 Be Healthy</a>
+      </div>
+    </nav>
+
+    <div class="container page animate">
+      <h2 class="text-center mb-4">Régime Alimentaire</h2>
+
+      <div class="card p-4">
+        <input
+          type="number"
+          id="poids"
+          class="form-control mb-2"
+          placeholder="الوزن (kg)"
+        />
+        <input
+          type="number"
+          id="taille"
+          class="form-control mb-2"
+          placeholder="الطول (cm)"
+        />
+
+        <select id="maladie" class="form-control mb-3">
+          <option value="">Aucun</option>
+          <option>Diabète</option>
+          <option>Hypertension</option>
+          <option>Obésité</option>
+          <option>Anémie</option>
+          <option>Asthme</option>
+          <option>Maladies cardiaques</option>
+        </select>
+
+        <button class="btn btn-success w-100" onclick="calcRegime()">
+          تحليل
+        </button>
+        <div id="res" class="mt-3 fs-5"></div>
+      </div>
+    </div>
+
+    <footer>Be Healthy | Régime</footer>
+
+    <script>
+      function calcRegime() {
+        let p = parseFloat(document.getElementById("poids").value);
+        let t = parseFloat(document.getElementById("taille").value) / 100;
+        let maladie = document.getElementById("maladie").value;
+
+        if (isNaN(p) || isNaN(t) || p <= 0 || t <= 0) {
+          alert("Remplissez tous les champs correctement!");
+          return;
+        }
+
+        let bmi = p / (t * t);
+        let etat = bmi < 18.5 ? "نحيف" : bmi < 25 ? "عادي" : "زائد الوزن";
+
+        let conseils = "";
+        if (etat == "نحيف")
+          conseils += "🥗 حاول زيادة البروتين والسعرات تدريجياً.\n";
+        if (etat == "عادي") conseils += "🍎 حافظ على توازن الغذاء والنشاط.\n";
+        if (etat == "زائد الوزن")
+          conseils += "🏃 قلل السكريات والدهون وزيد الحركة.\n";
+
+        if (maladie == "Diabète") conseils += "🚫 تجنب السكريات.\n";
+        if (maladie == "Hypertension") conseils += "🧂 قلل الملح.\n";
+        if (maladie == "Obésité") conseils += "🏃 النشاط البدني مهم.\n";
+        if (maladie == "Anémie") conseils += "🥩 تناول الحديد.\n";
+        if (maladie == "Asthme") conseils += "💨 تجنب التدخين.\n";
+        if (maladie == "Maladies cardiaques")
+          conseils += "❤️ قلل الدهون المشبعة.\n";
+        if (maladie == "") conseils += "🥗 اتبع نظام غذائي متوازن.\n";
+
+        document.getElementById("res").innerHTML = `
+  <p>📊 BMI : <b>${bmi.toFixed(1)}</b> (${etat})</p>
+  <hr>
+  <p>💡 نصائح غذائية:</p>
+  <p>${conseils.replace(/\n/g, "<br>")}</p>
+  `;
+      }
+    </script>
+
+    <script src="transition.js"></script>
+  </body>
+</html>

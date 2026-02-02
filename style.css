@@ -1,0 +1,116 @@
+/* Body + background */
+body{
+  background: linear-gradient(120deg,#000,#0f1a14);
+  color:#ffffff;
+  font-family: Poppins, Arial, sans-serif;
+  transition: opacity .4s;
+  margin:0;
+}
+
+/* Navbar */
+.custom-nav{background:#000;}
+.logo{color:#2ecc71!important;font-weight:bold}
+
+.nav-link{color:#ffffff!important;transition:.3s}
+.nav-link:hover{color:#2ecc71!important;transform:translateY(-2px)}
+
+/* Hero section (Accueil) */
+.hero{
+  height:100vh;
+  background:url("https://images.unsplash.com/photo-1490645935967-10de6ba17061") center/cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.hero-content{
+  background:rgba(0,0,0,.65);
+  padding:40px;
+  border-radius:15px;
+  text-align:center;
+}
+
+/* Cards */
+.card{
+  background:#111;
+  border:none;
+  border-radius:15px;
+  box-shadow:0 0 20px rgba(46,204,113,.25);
+  transition:.4s;
+}
+
+/* التعديل النهائي: النصوص داخل card لكن ليس inputs/select أبيض */
+.card, .card *:not(input):not(select) { 
+  color:#ffffff !important; 
+}
+
+.alert { color:#ffffff !important; }
+
+.card:hover{
+  transform:scale(1.05);
+}
+
+/* Pages */
+.page{margin-top:120px}
+
+/* Animations */
+.animate{animation:fadeUp .8s}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Inputs و Select = المستخدم يكتب بالأسود */
+input, select { 
+  color: #000 !important;     
+  background-color: #fff !important; 
+  border-radius:5px;
+  padding:8px;
+  border:1px solid #ccc;
+}
+
+/* النصوص اللي كتعرض النتائج = أبيض */
+#result, #result * { 
+  color: #fff !important;   
+}
+
+#res, #res * { 
+  color: #fff !important;  
+}
+
+/* Footer */
+footer{
+  background:#000;
+  padding:15px;
+  text-align:center;
+  margin-top:50px;
+  color:#aaa;
+  font-size:0.9rem;
+}
+
+/* Buttons */
+.btn-success{
+  background:#2ecc71;
+  border:none;
+  transition:.3s;
+}
+
+.btn-success:hover{
+  background:#27ae60;
+  transform:translateY(-2px);
+  box-shadow:0 0 10px rgba(46,204,113,.5);
+}
+
+/* Inputs focus effect */
+input:focus, select:focus{
+  outline:none;
+  box-shadow:0 0 5px #2ecc71;
+  border:1px solid #2ecc71;
+}
+select {
+  background-color: #11ff00;   /* الخلفية ديال الـ select box */
+  color: #000000;              /* النص اللي ظاهر فـ box */
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid #ccc;
+}

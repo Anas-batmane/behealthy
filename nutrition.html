@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Nutrition | Be Healthy</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-dark fixed-top custom-nav">
+      <div class="container">
+        <a class="navbar-brand logo" href="acceuil.html">🥗 Be Healthy</a>
+      </div>
+    </nav>
+
+    <div class="container page animate">
+      <h2 class="text-center mb-4">Résultats Nutritionnels</h2>
+
+      <div class="card p-4 fs-5" id="result"></div>
+    </div>
+
+    <footer>Be Healthy | Nutrition</footer>
+
+    <script>
+      let food = localStorage.getItem("food");
+      let weight = localStorage.getItem("weight");
+      let calories = localStorage.getItem("calories");
+      let protein = localStorage.getItem("protein");
+      let fats = localStorage.getItem("fats");
+      let sugar = localStorage.getItem("sugar");
+      let maladie = localStorage.getItem("maladie");
+
+      let conseils = "";
+      if (maladie == "Diabète") conseils += "🚫 تجنب السكريات.\n";
+      if (maladie == "Hypertension") conseils += "🧂 قلل الملح.\n";
+      if (maladie == "Obésité") conseils += "🏃 النشاط البدني مهم.\n";
+      if (maladie == "Anémie") conseils += "🥩 تناول الحديد.\n";
+      if (maladie == "Asthme") conseils += "💨 تجنب التدخين.\n";
+      if (maladie == "Maladies cardiaques")
+        conseils += "❤️ قلل الدهون المشبعة.\n";
+      if (maladie == "") conseils += "🥗 اتبع نظام غذائي متوازن.\n";
+
+      document.getElementById("result").innerHTML = `
+<p>🍽 Aliment : <b>${food}</b></p>
+<p>⚖ Poids : <b>${weight} g</b></p>
+<p>🔥 Calories : <b>${calories} kcal</b></p>
+<p>💪 Protéines : <b>${protein} g</b></p>
+<p>🧈 Lipides : <b>${fats} g</b></p>
+<p>🍬 Sucres : <b>${sugar} g</b></p>
+<hr>
+<p>💡 Conseils :</p>
+<p>${conseils.replace(/\n/g, "<br>")}</p>
+`;
+    </script>
+    <script src="transition.js"></script>
+  </body>
+</html>
